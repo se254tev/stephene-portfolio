@@ -14,14 +14,14 @@ function jsonResponse(statusCode, data) {
 
 export async function handler(event) {
   if (event.httpMethod !== 'POST') {
-    return jsonResponse(405, { success: false, error: 'Method not allowed.' })
+    return jsonResponse(405, { success: false, message: 'Unable to send your message. Please try again later.' })
   }
 
   let formData
   try {
     formData = JSON.parse(event.body || '')
   } catch {
-    return jsonResponse(400, { success: false, error: 'Invalid JSON request body.' })
+    return jsonResponse(400, { success: false, message: 'Please complete all required fields.' })
   }
 
   const { name, email, subject, message } = formData || {}
@@ -36,12 +36,12 @@ export async function handler(event) {
     !message.trim() ||
     !emailPattern.test(email.trim())
   ) {
-    return jsonResponse(400, { success: false, error: 'Please provide a valid name, email, subject, and message.' })
+    return jsonResponse(400, { success: false, message: 'Please complete all required fields with a valid email address.' })
   }
 
   if (!process.env.RESEND_API_KEY) {
     console.error('Contact email delivery is not configured: RESEND_API_KEY is missing.')
-    return jsonResponse(500, { success: false, error: 'Email service is not configured.' })
+    return jsonResponse(500, { success: false, message: 'Unable to send your message. Please try again later.' })
   }
 
   try {
@@ -63,12 +63,12 @@ export async function handler(event) {
 
     if (error) {
       console.error('Resend rejected the contact email request.')
-      return jsonResponse(502, { success: false, error: 'Unable to deliver the email.' })
+      return jsonResponse(502, { success: false, message: 'Unable to send your message. Please try again later.' })
     }
 
-    return jsonResponse(200, { success: true })
+    return jsonResponse(200, { success: true, message: 'Message sent successfully.' })
   } catch {
     console.error('Contact email delivery failed.')
-    return jsonResponse(500, { success: false, error: 'Unable to deliver the email.' })
+    return jsonResponse(500, { success: false, message: 'Unable to send your message. Please try again later.' })
   }
 }

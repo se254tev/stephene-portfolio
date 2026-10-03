@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './Contact.css'
 
 const initialForm = {
@@ -8,45 +8,53 @@ const initialForm = {
   message: ''
 }
 
+const requestTimeoutMs = 15000
+
 function Contact() {
   const [formData, setFormData] = useState(initialForm)
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
-  const [submissionError, setSubmissionError] = useState(false)
+  const [sendError, setSendError] = useState('')
+  const submissionInProgress = useRef(false)
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setFormData((prev) => ({ ...prev, [name]: value }))
     setErrors((prev) => ({ ...prev, [name]: '' }))
     setSubmitted(false)
-    setSubmissionError(false)
+    setSendError('')
   }
 
   const validateForm = () => {
     const nextErrors = {}
-    if (!formData.name.trim()) nextErrors.name = 'Name is required.'
-    if (!formData.email.trim()) nextErrors.email = 'Email is required.'
-    else if (!/^[^\s@]+@[^\s@]+.[^\s@]+$/.test(formData.email)) nextErrors.email = 'Please enter a valid email.'
-    if (!formData.subject.trim()) nextErrors.subject = 'Subject is required.'
-    if (!formData.message.trim()) nextErrors.message = 'Message is required.'
+    if (!formData.name.trim()) nextErrors.name = 'Please enter your name.'
+    if (!formData.email.trim()) nextErrors.email = 'Please enter your email address.'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) nextErrors.email = 'Please enter a valid email address.'
+    if (!formData.subject.trim()) nextErrors.subject = 'Please enter a subject.'
+    if (!formData.message.trim()) nextErrors.message = 'Please enter your message.'
     return nextErrors
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    if (submissionInProgress.current) return
+
     const nextErrors = validateForm()
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors)
       setSubmitted(false)
-      setSubmissionError(false)
+      setSendError('')
       return
     }
 
+    submissionInProgress.current = true
     setSending(true)
     setSubmitted(false)
-    setSubmissionError(false)
+    setSendError('')
     setErrors({})
+    const controller = new AbortController()
+    const timeoutId = window.setTimeout(() => controller.abort(), requestTimeoutMs)
 
     try {
       const response = await fetch('/.netlify/functions/send-email', {
@@ -54,19 +62,36 @@ function Contact() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
+        signal: controller.signal
       })
-      const result = await response.json()
 
-      if (!response.ok || result.success !== true) {
-        throw new Error('Contact message delivery failed.')
+      if (!response.ok) {
+        setSendError('server')
+        return
+      }
+
+      let result
+      try {
+        result = await response.json()
+      } catch {
+        setSendError('server')
+        return
+      }
+
+      if (result.success !== true) {
+        setSendError('server')
+        return
       }
 
       setSubmitted(true)
+      setErrors({})
       setFormData(initialForm)
-    } catch {
-      setSubmissionError(true)
+    } catch (error) {
+      setSendError(error.name === 'AbortError' ? 'timeout' : 'network')
     } finally {
+      window.clearTimeout(timeoutId)
+      submissionInProgress.current = false
       setSending(false)
     }
   }
@@ -84,9 +109,6 @@ function Contact() {
             <li><strong>LinkedIn:</strong> <a href="www.linkedin.com/in/stephene-otieno-880551399" target="_blank" rel="noreferrer">linkedin.com/in/stephene</a></li>
             <li><strong>Location:</strong> Kenya</li>
           </ul>
-          <p className="form-note">
-            This contact form is ready for a backend email service such as Formspree, Resend, or EmailJS.
-          </p>
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit} noValidate>
@@ -115,8 +137,31 @@ function Contact() {
           </div>
 
           <button type="submit" className="button primary" disabled={sending}>{sending ? 'Sending...' : 'Send Message'}</button>
-          {submitted && <p className="success-message">Your message has been sent successfully. Thank you for contacting me.</p>}
-          {submissionError && <p className="error-message">Unable to send your message. Please try again later.</p>}
+          {sending && <p className="form-note" role="status" aria-live="polite">Sending your message...</p>}
+          {submitted && (
+            <div className="success-message" role="status" aria-live="polite">
+              <p>Message sent successfully!</p>
+              <p>Thank you for contacting me. I’ll get back to you as soon as possible.</p>
+            </div>
+          )}
+          {sendError === 'server' && (
+            <div className="error-message" role="alert">
+              <p>Unable to send your message.</p>
+              <p>Please try again in a moment. If the problem continues, contact me directly by email or WhatsApp.</p>
+            </div>
+          )}
+          {sendError === 'network' && (
+            <div className="error-message" role="alert">
+              <p>Connection error.</p>
+              <p>Your message could not be sent. Please check your internet connection and try again.</p>
+            </div>
+          )}
+          {sendError === 'timeout' && (
+            <div className="error-message" role="alert">
+              <p>The request timed out.</p>
+              <p>Please check your connection and try again.</p>
+            </div>
+          )}
         </form>
       </div>
     </section>
