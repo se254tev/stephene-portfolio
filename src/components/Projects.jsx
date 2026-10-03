@@ -51,8 +51,8 @@ const projects = [
     technologies: ['Node.js', 'Express.js', 'MongoDB', 'Web frontend', 'Admin dashboard'],
     features: ['Customer ordering flow', 'Admin dashboard', 'Meal management', 'Platform integration'],
     github: null,
-    demo: 'https://bingomeals.netlify.app',
-    admin: 'https://bingoadmindarshboard.netlify.app',
+    demo: 'https://bingorestourant.netlify.app/',
+    admin: 'https://bingoadmindarshboard.netlify.app/',
     accent: 'meal'
   }
 ]

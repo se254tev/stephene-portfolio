@@ -12,35 +12,63 @@ function Contact() {
   const [formData, setFormData] = useState(initialForm)
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [submissionError, setSubmissionError] = useState(false)
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setFormData((prev) => ({ ...prev, [name]: value }))
     setErrors((prev) => ({ ...prev, [name]: '' }))
+    setSubmitted(false)
+    setSubmissionError(false)
   }
 
   const validateForm = () => {
     const nextErrors = {}
     if (!formData.name.trim()) nextErrors.name = 'Name is required.'
     if (!formData.email.trim()) nextErrors.email = 'Email is required.'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) nextErrors.email = 'Please enter a valid email.'
+    else if (!/^[^\s@]+@[^\s@]+.[^\s@]+$/.test(formData.email)) nextErrors.email = 'Please enter a valid email.'
     if (!formData.subject.trim()) nextErrors.subject = 'Subject is required.'
     if (!formData.message.trim()) nextErrors.message = 'Message is required.'
     return nextErrors
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const nextErrors = validateForm()
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors)
       setSubmitted(false)
+      setSubmissionError(false)
       return
     }
 
-    setSubmitted(true)
+    setSending(true)
+    setSubmitted(false)
+    setSubmissionError(false)
     setErrors({})
-    setFormData(initialForm)
+
+    try {
+      const response = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      const result = await response.json()
+
+      if (!response.ok || result.success !== true) {
+        throw new Error('Contact message delivery failed.')
+      }
+
+      setSubmitted(true)
+      setFormData(initialForm)
+    } catch {
+      setSubmissionError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -53,7 +81,7 @@ function Contact() {
             <li><strong>Email:</strong> stepheneotieno20@gmail.com</li>
             <li><strong>Phone/WhatsApp:</strong> +254797819571</li>
             <li><strong>GitHub:</strong> <a href="https://github.com/se254tev" target="_blank" rel="noreferrer">github.com/se254tev</a></li>
-            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">linkedin.com/in/stephene</a></li>
+            <li><strong>LinkedIn:</strong> <a href="www.linkedin.com/in/stephene-otieno-880551399" target="_blank" rel="noreferrer">linkedin.com/in/stephene</a></li>
             <li><strong>Location:</strong> Kenya</li>
           </ul>
           <p className="form-note">
@@ -86,8 +114,9 @@ function Contact() {
             {errors.message && <span className="error-message">{errors.message}</span>}
           </div>
 
-          <button type="submit" className="button primary">Send Message</button>
-          {submitted && <p className="success-message">Your message has been prepared for delivery through a configured email service.</p>}
+          <button type="submit" className="button primary" disabled={sending}>{sending ? 'Sending...' : 'Send Message'}</button>
+          {submitted && <p className="success-message">Your message has been sent successfully. Thank you for contacting me.</p>}
+          {submissionError && <p className="error-message">Unable to send your message. Please try again later.</p>}
         </form>
       </div>
     </section>
