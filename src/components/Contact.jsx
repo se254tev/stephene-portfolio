@@ -50,8 +50,8 @@ function Contact() {
           <p className="section-kicker">Contact</p>
           <h2>Let&apos;s Build Something Useful.</h2>
           <ul className="contact-list">
-            <li><strong>Email:</strong> stephene.otieno@example.com</li>
-            <li><strong>Phone/WhatsApp:</strong> +254 700 000 000</li>
+            <li><strong>Email:</strong> stepheneotieno20@gmail.com</li>
+            <li><strong>Phone/WhatsApp:</strong> +254797819571</li>
             <li><strong>GitHub:</strong> <a href="https://github.com/se254tev" target="_blank" rel="noreferrer">github.com/se254tev</a></li>
             <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">linkedin.com/in/stephene</a></li>
             <li><strong>Location:</strong> Kenya</li>

@@ -12,7 +12,7 @@ function Footer() {
         <div className="footer-links">
           <a href="https://github.com/se254tev" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="mailto:stephene.otieno@example.com">Email</a>
+          <a href="mailto:stepheneotieno20@gmail.com">Email</a>
         </div>
       </div>
 
