@@ -1,0 +1,101 @@
+:root {
+  --bg: #060b16;
+  --bg-soft: #0c172a;
+  --panel: rgba(15, 23, 42, 0.72);
+  --panel-strong: #0f172a;
+  --line: rgba(148, 163, 184, 0.16);
+  --text: #e2e8f0;
+  --text-soft: #cbd5e1;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-strong: #2563eb;
+  --success: #86efac;
+  --danger: #fca5a5;
+  --shadow: rgba(15, 23, 42, 0.42);
+
+  font-family: Inter, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(37, 99, 235, 0.2), transparent 35%),
+    var(--bg);
+  color: var(--text);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+button,
+a,
+input,
+textarea {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+p,
+li,
+label {
+  color: var(--text-soft);
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(56, 189, 248, 0.8);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(96, 165, 250, 0.35);
+}

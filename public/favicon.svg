@@ -1,0 +1,6 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Stephene monogram logo">
+  <rect width="64" height="64" rx="18" fill="#07111f"/>
+  <rect x="5" y="5" width="54" height="54" rx="14" fill="none" stroke="#38bdf8" stroke-opacity="0.6"/>
+  <path d="M18 46 V18 H28.5 C36.7 18 42 22.7 42 30 C42 37.4 36.7 42 28.5 42 H18 M18 32 H28.5 C31.7 32 34 30.7 34 27.7 C34 24.7 31.7 23.5 28.5 23.5 H18" fill="none" stroke="#f8fafc" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M42 46 L46 18 H52 L48 46 H42Z" fill="#38bdf8"/>
+</svg>

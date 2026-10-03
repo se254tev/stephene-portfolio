@@ -1,0 +1,33 @@
+.capstone-section .capstone-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 1.25rem;
+}
+
+.capstone-summary {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: rgba(15,23,42,0.6);
+  border: 1px solid rgba(148,163,184,0.08);
+}
+
+.capstone-details {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: rgba(15,23,42,0.56);
+  border: 1px solid rgba(148,163,184,0.08);
+}
+
+.capstone-summary .muted {
+  color: var(--text-muted);
+}
+
+.capstone-links .button {
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .capstone-section .capstone-layout {
+    grid-template-columns: 1fr;
+  }
+}

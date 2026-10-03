@@ -1,0 +1,60 @@
+.about-section {
+  padding-top: 0.5rem;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  color: #cbd5e1;
+}
+
+.about-text p {
+  margin: 0;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.25rem 1.2rem;
+  border-radius: 1.2rem;
+  background: rgba(15, 23, 42, 0.56);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.timeline-dot {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7dd3fc, #2563eb);
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.12);
+}
+
+.timeline-arrow {
+  margin-left: 0.5rem;
+  color: #7dd3fc;
+}
+
+@media (max-width: 760px) {
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+}

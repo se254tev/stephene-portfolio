@@ -1,0 +1,29 @@
+.ai-radio-section .ai-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 1.25rem;
+}
+
+.ai-summary {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: rgba(15,23,42,0.6);
+  border: 1px solid rgba(148,163,184,0.08);
+}
+
+.ai-details {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: rgba(15,23,42,0.56);
+  border: 1px solid rgba(148,163,184,0.08);
+}
+
+.ai-summary a {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .ai-radio-section .ai-layout {
+    grid-template-columns: 1fr;
+  }
+}

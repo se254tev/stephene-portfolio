@@ -1,0 +1,69 @@
+.page-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem 2rem;
+}
+
+.section {
+  padding: 4.5rem 0;
+  scroll-margin-top: 5rem;
+}
+
+.section-header {
+  margin-bottom: 1.8rem;
+}
+
+.section-kicker {
+  margin: 0 0 0.75rem;
+  color: #7dd3fc;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  max-width: 760px;
+}
+
+h1,
+h2,
+h3,
+p,
+a,
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
