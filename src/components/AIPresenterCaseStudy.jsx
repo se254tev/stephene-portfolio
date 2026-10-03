@@ -4,7 +4,7 @@ function AIPresenterCaseStudy() {
   return (
     <section id="ai-radio" className="section ai-radio-section">
       <div className="section-header">
-        <p className="section-kicker">Final-Year Capstone Project</p>
+        <p className="section-kicker">Personal Project — Technical Case Study</p>
         <h2>AI Radio Presenter — Technical Case Study</h2>
       </div>
 
@@ -12,18 +12,20 @@ function AIPresenterCaseStudy() {
         <div className="ai-summary">
           <h3>Overview</h3>
           <p>
-            The repository <a href="https://github.com/se254tev/AI-radio-presenter" target="_blank" rel="noreferrer">AI-radio-presenter</a>
-            describes a production-focused autonomous AI radio presenter capable of running multi-hour broadcasts with
-            segment planning, natural language generation and text-to-speech synthesis. The content below documents only
-            what the repository and its configuration files reveal; where details are missing they are marked with
-            <strong> [ADD INFORMATION]</strong>.
+            The AI Radio Presenter is a personal AI engineering project focused on building a radio presentation system
+            with components for broadcast planning, language-model script generation, text-to-speech, and streaming
+            workflows. The <a href="https://github.com/se254tev/AI-radio-presenter" target="_blank" rel="noreferrer">AI-radio-presenter</a>
+            repository contains a FastAPI backend and separate AI, voice, scheduler, and streaming modules. It is
+            independently developed and remains in progress; the presence of these components does not by itself verify
+            end-to-end broadcast operation. Where implementation or runtime details are not confirmed, they are marked
+            with <strong> [ADD INFORMATION]</strong>.
           </p>
 
           <h4>Status</h4>
-          <p>Active Development (repository indicates a working backend with AI and voice components)</p>
+          <p>Active Development — personal AI engineering project</p>
 
           <h4>Primary focus</h4>
-          <p>AI • Media Technology • Software Development</p>
+          <p>AI • Media Technology • Backend Engineering • Automation</p>
 
           <h4>Repository</h4>
           <p>
@@ -33,16 +35,16 @@ function AIPresenterCaseStudy() {
 
         <div className="ai-details">
           <section>
-            <h4>Verified architecture components</h4>
+            <h4>Repository architecture components</h4>
             <ul>
               <li>Backend API (FastAPI)</li>
               <li>AI pipeline: LLM generator and prompt builder (app/ai)</li>
               <li>Text-to-speech engine (app/voice/tts_engine.py)</li>
               <li>Speech-to-text engine (app/voice/stt_engine.py)</li>
               <li>Streaming and broadcast components (app/streaming)</li>
-              <li>Scheduler (APScheduler present in requirements)</li>
-              <li>Persistence layers: SQL (SQLAlchemy / asyncpg / Postgres) and optionally Mongo (motor/pymongo listed)</li>
-              <li>Integration with external AI and TTS providers (openai, elevenlabs) as listed in requirements.txt</li>
+              <li>Scheduling dependency: APScheduler (listed in requirements.txt)</li>
+              <li>Database dependencies: SQLAlchemy, asyncpg, psycopg, Motor, and PyMongo (actual database use/configuration: [ADD INFORMATION])</li>
+              <li>External provider packages: OpenAI and ElevenLabs are listed in requirements.txt (active provider configuration: [ADD INFORMATION])</li>
             </ul>
           </section>
 
@@ -56,17 +58,17 @@ function AIPresenterCaseStudy() {
 
           <section>
             <h4>AI pipeline (implemented components)</h4>
-            <p>The repository contains the following AI-related modules which implement the pipeline:</p>
+            <p>The repository contains these AI- and voice-related modules:</p>
             <ul>
-              <li>app/ai/prompt_builder.py — constructs prompts and show-planning inputs for the LLM</li>
-              <li>app/ai/llm_generator.py — orchestrates calls to language models to generate scripts and segments</li>
-              <li>app/voice/tts_engine.py — handles text-to-speech using providers such as ElevenLabs (per requirements)</li>
-              <li>app/voice/stt_engine.py — handles speech-to-text where needed</li>
+              <li>app/ai/prompt_builder.py — prompt construction module</li>
+              <li>app/ai/llm_generator.py — language-model generation module</li>
+              <li>app/voice/tts_engine.py — text-to-speech module; configured provider: [ADD INFORMATION]</li>
+              <li>app/voice/stt_engine.py — speech-to-text module</li>
             </ul>
             <p>
-              This results in a pipeline such as: Show plan & inputs → Prompt builder → LLM generation → Presenter script →
-              TTS → Audio processing → Streaming/output. Exact runtime orchestration is implemented in the repository's
-              scheduler/streaming services (see app/scheduler and app/streaming folders).
+              A high-level flow suggested by these components is: show plan and inputs → prompt builder → LLM generation →
+              presenter script → TTS → audio/streaming workflow. The exact runtime orchestration and which steps are
+              currently connected end-to-end are [ADD INFORMATION].
             </p>
           </section>
 
@@ -75,9 +77,9 @@ function AIPresenterCaseStudy() {
             <ul>
               <li>Backend: FastAPI-based HTTP API (requirements and app structure)</li>
               <li>AI: OpenAI client and custom LLM orchestration code in app/ai</li>
-              <li>Voice: ElevenLabs integration and a local TTS wrapper (app/voice/tts_engine.py)</li>
-              <li>Storage: SQLAlchemy + asyncpg for Postgres; motor/pymongo dependencies suggest optional MongoDB usage</li>
-              <li>Scheduling & automation: APScheduler listed for timed shows</li>
+              <li>Voice: TTS and STT modules are present in app/voice; configured speech providers: [ADD INFORMATION]</li>
+              <li>Storage: SQL and MongoDB driver dependencies are listed; configured database and stored data: [ADD INFORMATION]</li>
+              <li>Scheduling & automation: APScheduler is listed as a dependency; scheduled tasks currently running: [ADD INFORMATION]</li>
             </ul>
           </section>
 
@@ -91,12 +93,12 @@ function AIPresenterCaseStudy() {
           </section>
 
           <section>
-            <h4>Development progress (from repository)</h4>
+            <h4>Development progress — personal project</h4>
             <ol>
-              <li>Concept & design — show planning and AI-driven script generation (repo describes show-planner and LLM components)</li>
-              <li>Prototype — LLM integration and TTS proof-of-concept (app/ai + app/voice modules present)</li>
-              <li>Integration — scheduling, streaming, and persistence components added (app/scheduler, app/streaming, app/db)</li>
-              <li>Current development — active work on reliability, automation, and production readiness (README notes)</li>
+              <li>Concept & design — a show-planning and AI script-generation direction is reflected in the repository; project history: [ADD INFORMATION]</li>
+              <li>Prototype — AI and voice modules are present; prototype milestones and verified behavior: [ADD INFORMATION]</li>
+              <li>Integration — scheduler, streaming, and database-related components are present; connected workflows: [ADD INFORMATION]</li>
+              <li>Current development — Active Development; current priorities and testing progress: [ADD INFORMATION]</li>
             </ol>
           </section>
 
@@ -104,8 +106,9 @@ function AIPresenterCaseStudy() {
             <h4>How to explore the code</h4>
             <p>
               Review the repository files: <code>app/ai/</code>, <code>app/voice/</code>, <code>app/streaming/</code>, and
-              the requirements.txt to understand the exact integrations. Where specifics matter (deployment, secrets,
-              demo URL), the repository either documents them in README or leaves them for configuration.
+              <code> requirements.txt</code> to inspect the project components and declared dependencies. Where specifics
+              matter (deployment, secrets, demo URL, and verified runtime behavior), see the project configuration or
+              add confirmed details in place of <strong>[ADD INFORMATION]</strong>.
             </p>
           </section>
         </div>

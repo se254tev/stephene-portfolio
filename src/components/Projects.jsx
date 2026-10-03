@@ -3,16 +3,16 @@ import './Projects.css'
 
 const projects = [
   {
-    title: 'Final-Year Capstone Project',
-    category: 'Academic',
-    filters: ['Academic'],
-    description: '[ADD INFORMATION] — final-year academic project case study.',
-    problem: '[ADD INFORMATION]',
-    technologies: ['[ADD INFORMATION]'],
-    features: ['[ADD INFORMATION]'],
-    github: null,
-    demo: null,
-    accent: 'capstone'
+  title: 'BOLT Market: Digital Multi-Vendor Marketplace',
+  category: 'Academic',
+  filters: ['Academic'],
+  description: 'A digital multi-vendor marketplace designed to connect buyers, sellers, property providers, and delivery services through a unified platform aligned with Kenya Vision 2030.',
+  problem: 'Fragmented online commerce, limited access to digital markets, inefficient delivery coordination, and trust challenges between buyers and sellers.',
+  technologies: ['Flutter', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'AI', 'Blockchain'],
+  features: ['Multi-vendor marketplace', 'User authentication', 'Product and property listings', 'Order management', 'Delivery tracking', 'Admin dashboards', 'AI-powered features', 'Secure transactions'],
+  github: null,
+  demo: null,
+  accent: 'capstone'
   },
   {
     title: 'AI Radio Presenter',
