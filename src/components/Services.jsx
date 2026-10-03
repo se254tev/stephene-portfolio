@@ -24,6 +24,11 @@ const services = [
   {
     title: 'AI Integration',
     description: 'Integrating AI capabilities into software applications and workflows.'
+  },
+  {
+    title: 'Academic Writing & Formatting',
+    description:
+      'Remote support with academic document structure, formatting, proofreading, references and technical report preparation.'
   }
 ]
 

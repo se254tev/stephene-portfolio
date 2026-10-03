@@ -11,8 +11,6 @@ function FinalCapstone() {
       <div className="capstone-layout">
         <div className="capstone-summary">
           <h3>BOLT Market: An AI-Enhanced, Blockchain-Enabled Digital Multi-Vendor Marketplace for Kenya</h3>
-          <p className="muted">[ADD INFORMATION]</p>
-
           <h4>Problem statement</h4>
           <p>Kenya has experienced rapid growth in digital commerce, largely driven by widespread mobile-money adoption and increasing internet accessibility. However, many small and medium-sized businesses still face challenges when moving their operations online, including limited access to trustworthy digital marketplaces, fragmented seller and customer experiences, difficulties managing inventory and orders, and concerns around transaction transparency and consumer trust.
 

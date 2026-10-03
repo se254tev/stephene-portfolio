@@ -16,7 +16,7 @@ function Hero() {
           <a href="#contact" className="button secondary">Contact Me</a>
         </div>
 
-        <a href="/Stephene-Odhiambo-CV.pdf" className="text-link" download>
+        <a href="/STEPHENE_OTIENO_ODHIAMBO_ATS_CV.pdf" className="text-link" download>
           Download CV
         </a>
       </div>
