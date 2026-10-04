@@ -4,6 +4,11 @@ function Hero() {
   return (
     <section id="home" className="hero-section">
       <div className="hero-copy">
+        <img
+          className="hero-profile-photo"
+          src="/images/stephene-otieno.png"
+          alt="Stephene Otieno — ICT professional"
+        />
         <p className="eyebrow">Hello, I&apos;m Stephene Otieno Odhiambo.</p>
         <h1>Building Practical Technology Solutions That Solve Real Problems.</h1>
         <p className="lead">

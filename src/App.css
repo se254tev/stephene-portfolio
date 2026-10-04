@@ -56,6 +56,22 @@ textarea {
   font: inherit;
 }
 
+@media (max-width: 640px) {
+  .page-shell {
+    padding: 0 0.9rem 1.75rem;
+  }
+
+  .section {
+    padding: 3.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header h2 {
+    max-width: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
