@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 4rem 1.25rem 2rem;
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   align-items: center;
   gap: 2rem;
   min-height: 80vh;
@@ -120,6 +120,7 @@
   background-image: linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
   background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
   mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
 }
 
