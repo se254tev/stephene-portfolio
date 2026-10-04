@@ -39,7 +39,6 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  overflow-x: clip;
   background:
     radial-gradient(circle at top, rgba(37, 99, 235, 0.2), transparent 35%),
     var(--bg);
@@ -97,6 +96,12 @@ input:focus-visible,
 textarea:focus-visible {
   outline: 2px solid rgba(56, 189, 248, 0.8);
   outline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  body {
+    min-width: 0;
+  }
 }
 
 ::selection {

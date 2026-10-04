@@ -292,6 +292,45 @@
   }
 }
 
+@media (max-width: 767px) {
+  .hero-section,
+  .hero-copy,
+  .hero-visual {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .visual-shell {
+    width: 100%;
+    min-width: 0;
+    max-width: 530px;
+  }
+
+  .signal-1 {
+    width: 56%;
+    height: auto;
+    aspect-ratio: 1;
+    top: 23%;
+    left: 10%;
+  }
+
+  .signal-2 {
+    width: 72%;
+    height: auto;
+    aspect-ratio: 1;
+    right: 5%;
+    bottom: 7%;
+  }
+
+  .signal-3 {
+    width: 44%;
+    height: auto;
+    aspect-ratio: 1;
+    left: 48%;
+    bottom: 8%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .signal {
     animation: none;

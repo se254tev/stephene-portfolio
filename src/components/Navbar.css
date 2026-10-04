@@ -94,6 +94,8 @@
     top: calc(100% + 0.5rem);
     left: 1rem;
     right: 1rem;
+    box-sizing: border-box;
+    min-width: 0;
     display: none;
     flex-direction: column;
     background: rgba(15, 23, 42, 0.96);
@@ -110,5 +112,15 @@
   .nav-link {
     width: 100%;
     text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-container {
+    min-width: 0;
+  }
+
+  .hamburger {
+    flex: 0 0 auto;
   }
 }
